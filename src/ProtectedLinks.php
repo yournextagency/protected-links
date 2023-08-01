@@ -128,7 +128,7 @@ class ProtectedLinks extends Plugin
             Element::EVENT_REGISTER_TABLE_ATTRIBUTES,
             function(RegisterElementTableAttributesEvent $e) {
                 $e->tableAttributes['downloads'] = [
-                    'label' => Craft::t('protectedlinks', 'Downloads')
+                    'label' => Craft::t('protected-links', 'Downloads')
                 ];
         });
 
@@ -143,7 +143,7 @@ class ProtectedLinks extends Plugin
             Asset::class,
             Element::EVENT_REGISTER_SORT_OPTIONS,
             function(RegisterElementSortOptionsEvent $e) {
-                //$e->sortOptions['protectedlinks_links.downloads'] = Craft::t('protectedlinks', 'Downloads');
+                //$e->sortOptions['protectedlinks_links.downloads'] = Craft::t('protected-links', 'Downloads');
         });*/
 
         /*Event::on(
@@ -230,7 +230,7 @@ class ProtectedLinks extends Plugin
  */
         Craft::info(
             Craft::t(
-                'protectedlinks',
+                'protected-links',
                 '{name} plugin loaded',
                 ['name' => $this->name]
             ),
