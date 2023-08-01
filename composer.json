@@ -1,0 +1,44 @@
+{
+    "name": "yournextagency/protected-links",
+    "description": "Secure & restricted files download",
+    "type": "craft-plugin",
+    "keywords": [
+        "craft",
+        "craftcms",
+        "craft-plugin",
+        "protected links",
+        "downloads", 
+        "assets", 
+        "restricted content"
+    ],
+    "support": {
+        "docs": "",
+        "issues": ""
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "",
+            "homepage": ""
+        }
+    ],
+    "require": {
+        "craftcms/cms": "^4.0.0"
+    },
+    "autoload": {
+        "psr-4": {
+          "yournextagency\\protectedlinks\\": "src/"
+        }
+    },
+    "extra": {
+        "name": "Protected Links",
+        "handle": "protected-links",
+        "hasCpSettings": false,
+        "hasCpSection": false,
+        "changelogUrl": "",
+        "components": {
+            "link": "yournextagency\\protectedlinks\\services\\Link"
+        },
+        "class": "yournextagency\\protectedlinks\\ProtectedLinks"
+    }
+}

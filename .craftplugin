@@ -1,0 +1,24 @@
+{
+  "pluginName": "Protected Links",
+  "pluginDescription": "Secure & restricted files download",
+  "pluginVersion": "1.0.0",
+  "pluginAuthorName": "Your Next Agency",
+  "pluginVendorName": "yournextagency",
+  "pluginAuthorUrl": "",
+  "pluginAuthorGithub": "",
+  "codeComments": [
+    "codeComments"
+  ],
+  "pluginComponents": [
+    "controllers",
+    "models",
+    "records",
+    "services",
+    "variables"
+  ],
+  "controllerName": "Link",
+  "modelName": "Link",
+  "recordName": "Link",
+  "serviceName": "Link",
+  "apiVersion": "api_version_3_0"
+}
