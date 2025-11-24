@@ -1,6 +1,6 @@
 <?php
 /**
- * Protected Links plugin for Craft CMS 4.x
+ * Protected Links plugin for Craft CMS 4.x and 5.x
  *
  * Secure & restricted files download
  *

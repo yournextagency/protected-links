@@ -1,6 +1,6 @@
 <?php
 /**
- * Protected Links plugin for Craft CMS 4.x
+ * Protected Links plugin for Craft CMS 4.x and 5.x
  *
  * Secure & restricted files download
  *
@@ -33,21 +33,59 @@ class Link extends Model
     // =========================================================================
 
     /**
-     * Some model attribute
-     *
-     * @var string
+     * @var int Site ID
      */
-    public $siteId = 1;
-    public $assetId = 0;
-    public $checksum = '';
-    public $denyHotlink = 0;
-    public $requireLogin = 0;
-    public $memberGroups = '';
-    public $members = '';
-    public $inline = 0;
-    public $mimeType = 0;
-    public $dateExpires = null;
-    public $downloads = 0;
+    public int $siteId = 1;
+
+    /**
+     * @var int Asset ID
+     */
+    public int $assetId = 0;
+
+    /**
+     * @var string Link checksum
+     */
+    public string $checksum = '';
+
+    /**
+     * @var int Deny hotlink flag
+     */
+    public int $denyHotlink = 0;
+
+    /**
+     * @var int Require login flag
+     */
+    public int $requireLogin = 0;
+
+    /**
+     * @var string Serialized member groups
+     */
+    public string $memberGroups = '';
+
+    /**
+     * @var string Serialized members
+     */
+    public string $members = '';
+
+    /**
+     * @var int Display inline flag
+     */
+    public int $inline = 0;
+
+    /**
+     * @var string|int MIME type
+     */
+    public string|int $mimeType = 0;
+
+    /**
+     * @var string|null Expiration date
+     */
+    public ?string $dateExpires = null;
+
+    /**
+     * @var int Download counter
+     */
+    public int $downloads = 0;
 
     // Public Methods
     // =========================================================================
