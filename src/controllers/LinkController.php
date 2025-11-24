@@ -1,6 +1,6 @@
 <?php
 /**
- * Protected Links plugin for Craft CMS 4.x
+ * Protected Links plugin for Craft CMS 4.x and 5.x
  *
  * Secure & restricted files download
  *
@@ -119,7 +119,7 @@ class LinkController extends Controller
                 throw new ForbiddenHttpException(Craft::t('protected-links', 'Link has expired'));
             }
         }
-        if (!empty($link['members']) && Craft::$app->getUser()->getIdentity()->admin == false)
+        if (!empty($link['members']) && !Craft::$app->getUser()->getIdentity()->getIsAdmin())
         {
             if (!$member_id)
             {
@@ -132,7 +132,7 @@ class LinkController extends Controller
             }
         }
 
-        if (!empty($link['memberGroups']) && Craft::$app->getUser()->getIdentity()->admin == false)
+        if (!empty($link['memberGroups']) && !Craft::$app->getUser()->getIdentity()->getIsAdmin())
         {
             if (!$member_id)
             {
@@ -208,14 +208,8 @@ class LinkController extends Controller
             }
         }
 
-        // choose $volumeId by Craft version
-        if (version_compare(Craft::$app->getInfo()->version, "3.1", "<")) {
-            // 3.0.x
-            $volumeId = $asset->volumeId;
-        } else {
-            //3.1.x
-            $volumeId = $asset->getVolume()->uid;
-        }
+        // Use volume UID for permission check
+        $volumeId = $asset->getVolume()->uid;
         if (!Craft::$app->getUser()->checkPermission($permissionName.':'.$volumeId)) {
             throw new ForbiddenHttpException('User is not permitted to perform this action');
         }

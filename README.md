@@ -1,4 +1,4 @@
-# Protected Links plugin for Craft CMS 4.x
+# Protected Links plugin for Craft CMS 4.x and 5.x
 
 This plugin is intended to provide a way for restricting access to asset files and hide their actual location. Additionally, it will count downloads for each file.
 
