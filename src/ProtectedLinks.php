@@ -31,6 +31,7 @@ use craft\events\RegisterElementDefaultTableAttributesEvent;
 use craft\events\RegisterElementSortOptionsEvent;
 use craft\events\RegisterElementSourcesEvent;
 use craft\events\CancelableEvent;
+use craft\events\DefineAttributeHtmlEvent;
 
 use craft\db\Query;
 
@@ -156,7 +157,7 @@ class ProtectedLinks extends Plugin
         Event::on(
             Asset::class,
             Element::EVENT_SET_TABLE_ATTRIBUTE_HTML,
-            function(craft\events\SetElementTableAttributeHtmlEvent $e) {
+            function(DefineAttributeHtmlEvent $e) {
                 if($e->attribute === 'downloads'){
                     $e->html = $this->link->downloads($e->sender->id);
                 }
