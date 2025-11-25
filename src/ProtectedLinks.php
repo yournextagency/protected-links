@@ -155,7 +155,7 @@ class ProtectedLinks extends Plugin
 
         Event::on(
             Asset::class,
-            Element::EVENT_SET_TABLE_ATTRIBUTE_HTML,
+            Element::EVENT_DEFINE_ATTRIBUTE_HTML,
             function(craft\events\SetElementTableAttributeHtmlEvent $e) {
                 if($e->attribute === 'downloads'){
                     $e->html = $this->link->downloads($e->sender->id);
