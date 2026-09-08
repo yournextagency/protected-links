@@ -119,7 +119,7 @@ class LinkController extends Controller
                 throw new ForbiddenHttpException(Craft::t('protected-links', 'Link has expired'));
             }
         }
-        if (!empty($link['members']) && !Craft::$app->getUser()->getIdentity()->getIsAdmin())
+        if (!empty($link['members']) && !Craft::$app->getUser()->getIsAdmin())
         {
             if (!$member_id)
             {
@@ -132,7 +132,7 @@ class LinkController extends Controller
             }
         }
 
-        if (!empty($link['memberGroups']) && !Craft::$app->getUser()->getIdentity()->getIsAdmin())
+        if (!empty($link['memberGroups']) && !Craft::$app->getUser()->getIsAdmin())
         {
             if (!$member_id)
             {

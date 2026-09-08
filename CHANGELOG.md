@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## 5.0.4 - 2026-09-08
+### Fixed
+- Restore admin access to member- and group-restricted links. The Craft 5 port called `getIsAdmin()` on the identity, which is a `craft\elements\User` element and has no such method, so every restricted download threw an `UnknownMethodException`. The check now goes through the `craft\web\User` component, which also stops it from tripping over a null identity for anonymous requests.
+
 ## 4.0 - 2023-08-01
 ### Changed 
 - Craft 4.x compatibility
