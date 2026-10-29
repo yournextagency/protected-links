@@ -14,6 +14,7 @@ use yournextagency\protectedlinks\ProtectedLinks;
 
 use Craft;
 use yii\base\Exception;
+use yii\base\InvalidConfigException;
 use craft\db\Query;
 use craft\helpers\UrlHelper;
 
@@ -94,7 +95,14 @@ class ProtectedLinksVariable
             throw new Exception(Craft::t('protected-links', 'assetId cannot be empty'));
         }
         
-        $params['checksum'] = sha1(serialize($params));
+        // The code is the only thing standing between a visitor and the file, so it must not be
+        // computable from the link params alone: key it with the site's security key.
+        $securityKey = Craft::$app->getConfig()->getGeneral()->securityKey;
+        if ($securityKey === '')
+        {
+            throw new InvalidConfigException('Protected links require the securityKey config setting to be set.');
+        }
+        $params['checksum'] = hash_hmac('sha256', serialize($params), $securityKey);
         
         $link = (new Query())
                 ->select('id')
