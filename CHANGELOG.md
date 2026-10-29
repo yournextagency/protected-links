@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/) and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## 5.1.0 - 2026-10-29
+### Security
+- Link codes can no longer be computed from the link params. They were a plain SHA-1 of the params (site ID, asset ID and the link options), so anyone could build a working code for any asset ID without having seen the link. Codes are now an HMAC-SHA256 keyed with Craft's `securityKey`, and generating a link throws if `securityKey` is empty.
+- Links issued before 5.1.0 keep working until their codes are rotated. Run `php craft protected-links/links/rotate-legacy-links` after upgrading to replace each legacy code with a random one; links issued before the upgrade then stop working, and templates that call `craft.protectedLinks.link()` issue new links on their next render. Links issued since 5.1.0 are left alone, so the command can run at any time and more than once.
+
+### Added
+- `protected-links/links/rotate-legacy-links` console command.
+
 ## 5.0.4 - 2026-09-08
 ### Changed
 - Require Craft 5. The 5.0.x line already relies on `Element::EVENT_DEFINE_ATTRIBUTE_HTML` and `craft\events\DefineAttributeHtmlEvent`, which the `^4.0.0` half of the old constraint does not guarantee. Craft 4 installs stay on the 4.0.x line.
